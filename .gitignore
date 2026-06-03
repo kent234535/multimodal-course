@@ -17,7 +17,7 @@
 !.env.example
 
 # Provided/generated large datasets and private course metadata. Keep out of public git unless licensing allows redistribution.
-/answers.jsonl
+/data/raw/
 /images/
 /项目元信息.md
 /llava/data/eval/AMBER/images/
@@ -31,6 +31,9 @@
 /data/cache/
 !/data/samples/
 !/data/samples/**
+
+# Local compressed artifacts
+/artifacts/
 
 # Model caches, downloaded weights, and checkpoints
 /hf_cache/

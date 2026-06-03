@@ -31,7 +31,7 @@ Do **not** commit secrets, generated datasets, model weights, or large provided 
 Ignored by default:
 
 - `.env`
-- `answers.jsonl`
+- `data/raw/answers.jsonl`
 - `images/`
 - generated DPO/audit artifacts under `data/processed/` and `data/audit/`
 - model checkpoints/weights/caches

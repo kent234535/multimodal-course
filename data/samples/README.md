@@ -12,7 +12,7 @@ or directly:
 
 ```bash
 python3 scripts/build_dpo_pairs.py \
-  --answers answers.jsonl \
+  --answers data/raw/answers.jsonl \
   --output data/samples/qwen2_5_vl_dpo_preview.json \
   --audit data/samples/qwen2_5_vl_dpo_preview_audit.jsonl \
   --judge-mode mock \

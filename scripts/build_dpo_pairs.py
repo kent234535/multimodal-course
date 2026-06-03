@@ -106,7 +106,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Create LLaMA-Factory DPO JSON from answers.jsonl using an auditable multimodal judge."
     )
-    parser.add_argument("--answers", default=env_str("DPO_ANSWERS_PATH", "answers.jsonl"), help="Input answers.jsonl path.")
+    parser.add_argument("--answers", default=env_str("DPO_ANSWERS_PATH", "data/raw/answers.jsonl"), help="Input answers.jsonl path.")
     parser.add_argument("--output", default=env_str("DPO_OUTPUT_PATH", "data/processed/qwen2_5_vl_dpo_local_1000.json"), help="Output LLaMA-Factory DPO JSON path.")
     parser.add_argument("--audit", default=env_str("DPO_AUDIT_PATH", "data/audit/qwen2_5_vl_dpo_local_1000.audit.jsonl"), help="Audit JSONL path.")
     parser.add_argument("--sample-output", default=None, help="Optional extra small sample JSON copied from accepted rows.")
