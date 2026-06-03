@@ -1,0 +1,58 @@
+# macOS/local files
+.DS_Store
+
+# Local assistant/workflow state
+/.agents/
+/.claude/
+/.codex/
+/.trellis/
+
+# pixi environments
+.pixi/*
+!.pixi/config.toml
+
+# Local secrets and runtime configuration
+.env
+.env.*
+!.env.example
+
+# Provided/generated large datasets and private course metadata. Keep out of public git unless licensing allows redistribution.
+/answers.jsonl
+/images/
+/项目元信息.md
+/llava/data/eval/AMBER/images/
+/llava/data/eval/AMBER/amber_gen/answers/
+/llava/data/eval/AMBER/amber_dis/answers/
+
+# Generated DPO datasets and judge audit artifacts
+/data/processed/
+/data/audit/
+/data/tmp/
+/data/cache/
+!/data/samples/
+!/data/samples/**
+
+# Model caches, downloaded weights, and checkpoints
+/hf_cache/
+/huggingface/
+/models/
+/checkpoints/
+/saves/
+/LlamaFactory/
+/LLaMA-Factory/
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.ckpt
+
+# Heavy AMBER evaluation outputs
+/results/
+/outputs/
+
+# Python/runtime artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/

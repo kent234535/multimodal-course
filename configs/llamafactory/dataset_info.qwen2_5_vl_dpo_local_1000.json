@@ -1,0 +1,13 @@
+{
+  "qwen2_5_vl_dpo_local_1000": {
+    "file_name": "qwen2_5_vl_dpo_local_1000.json",
+    "columns": {
+      "prompt": "instruction",
+      "query": "input",
+      "chosen": "chosen",
+      "rejected": "rejected",
+      "images": "images"
+    },
+    "ranking": true
+  }
+}

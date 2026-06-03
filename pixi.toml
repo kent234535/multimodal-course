@@ -1,0 +1,33 @@
+[workspace]
+authors = ["Hanwen Zhang <67189034+hwzhangcs@users.noreply.github.com>"]
+channels = ["conda-forge", "pytorch", "nvidia"]
+name = "multimodal"
+platforms = ["linux-64"]
+version = "0.1.0"
+
+[tasks]
+build-dpo-preview = "python3 scripts/build_dpo_pairs.py --answers answers.jsonl --output data/samples/qwen2_5_vl_dpo_preview.json --audit data/samples/qwen2_5_vl_dpo_preview_audit.jsonl --judge-mode mock --max-accepted 5 --max-questions 5 --overwrite"
+build-dpo-local = "python3 scripts/build_dpo_pairs.py --answers answers.jsonl --output data/processed/qwen2_5_vl_dpo_local_1000.json --audit data/audit/qwen2_5_vl_dpo_local_1000.audit.jsonl --max-accepted 1000 --max-questions 3000 --workers ${DPO_WORKERS:-4} --resume"
+register-dpo-local = "bash -lc 'set -a; [ -f .env ] && source .env; set +a; python3 scripts/register_llamafactory_dataset.py --llamafactory-dir \"${LLAMAFACTORY_DIR:-LlamaFactory}\" --dataset-name \"${LLAMAFACTORY_DATASET_NAME:-qwen2_5_vl_dpo_local_1000}\" --dataset-file \"${LLAMAFACTORY_DATASET_FILE:-qwen2_5_vl_dpo_local_1000.json}\" --source-json data/processed/qwen2_5_vl_dpo_local_1000.json --image-source \"${LLAMAFACTORY_IMAGE_SOURCE:-images}\" --link-images'"
+train-local = "bash -lc 'set -a; [ -f .env ] && source .env; set +a; REPO_ROOT=$(pwd); cd \"${LLAMAFACTORY_DIR:-LlamaFactory}\" && llamafactory-cli train \"$REPO_ROOT/configs/llamafactory/train_dpo_qwen2_5_vl_local.yaml\"'"
+train-full = "bash -lc 'set -a; [ -f .env ] && source .env; set +a; REPO_ROOT=$(pwd); cd \"${LLAMAFACTORY_DIR:-LlamaFactory}\" && FORCE_TORCHRUN=1 llamafactory-cli train \"$REPO_ROOT/configs/llamafactory/train_dpo_qwen2_5_vl_full.yaml\"'"
+fix-lora = "bash -lc 'set -a; [ -f .env ] && source .env; set +a; python3 scripts/fix_lora_adapter.py --adapter-dir \"${LORA_ADAPTER_DIR:-LlamaFactory/saves/qwen2_5_vl_3b_lora_dpo_local}\" --output-dir \"${LORA_FIXED_DIR:-LlamaFactory/saves/qwen2_5_vl_3b_lora_dpo_local_fixed}\"'"
+eval-base-local = "bash scripts/eval_amber.sh --profile local --mode base --output-name amber_base_local"
+eval-lora-local = "bash scripts/eval_amber.sh --profile local --mode lora --output-name amber_lora_local"
+eval-base-full = "bash scripts/eval_amber.sh --profile full --mode base --output-name amber_base_full"
+eval-lora-full = "bash scripts/eval_amber.sh --profile full --mode lora --output-name amber_lora_full"
+summarize-results = "python3 scripts/summarize_amber_results.py --base-output amber_base_local --lora-output amber_lora_local"
+compile-scripts = "python3 -m compileall scripts"
+
+[dependencies]
+python = ">=3.10,<3.12"
+pip = ">=24"
+pytorch = ">=2.4"
+torchvision = ">=0.19"
+pytorch-cuda = "12.4.*"
+openai = ">=1.50"
+pydantic = ">=2.8"
+pillow = ">=10.4"
+tqdm = ">=4.66"
+pyyaml = ">=6.0"
+safetensors = ">=0.4"

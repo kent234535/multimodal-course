@@ -1,0 +1,24 @@
+# Default OpenAI-compatible multimodal judge configuration.
+# Secrets are read from environment variables, never from this file.
+api:
+  base_url_env: OPENAI_BASE_URL
+  api_key_env: OPENAI_API_KEY
+  timeout_seconds: 120
+  max_retries: 3
+
+judge:
+  mode: api
+  model: gpt-5.4-mini
+  refine_model: gpt-5.5
+  enable_refine: false
+  confidence_threshold: 0.70
+  refine_threshold: 0.78
+  min_score_gap: 1.0
+  temperature: 0
+  max_output_tokens: 2048
+
+selection:
+  default_max_accepted: 1000
+  default_max_questions: 3000
+  seed: 0
+  require_exactly_ten_candidates: false
