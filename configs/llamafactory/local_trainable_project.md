@@ -1,6 +1,6 @@
 # Local Trainable Project Setup
 
-This checkout has been combined with the recovered 5,059-pair DPO annotation artifacts and local course images.
+This checkout has been combined with the complete 10,000-pair DPO annotation artifacts from the provided Google Drive package and local course images.
 
 ## Local data layout
 
@@ -15,22 +15,27 @@ The following paths are local-only and ignored by git:
 The canonical DPO dataset inside this repository is:
 
 ```text
-data/processed/qwen2_5_vl_dpo_full.json
+data/processed/qwen2_5_vl_dpo.json
 ```
 
-It points to:
+Compatibility alias:
 
 ```text
-data/processed/qwen2_5_vl_dpo_5059_54mini_54refine_recovered.json
+data/processed/qwen2_5_vl_dpo_full.json -> qwen2_5_vl_dpo.json
 ```
 
 Summary:
 
-- DPO rows: 5,059
-- Unique images: 5,059
+- DPO rows: 10,000
+- Unique images: 10,000
 - Raw answer rows: 100,000
 - Training images available through `images/`: 10,000
 - AMBER images available through `llava/data/eval/AMBER/images/`: 1,004
+- Judge model: `gpt-5.4`
+- Refine model: `gpt-5.5`
+- Average confidence: 0.911256
+
+The earlier recovered 5,059-pair artifacts are retained locally under their original `qwen2_5_vl_dpo_5059_54mini_54refine_recovered*` filenames for audit/history, but they are no longer the default full-training dataset.
 
 ## LLaMA-Factory checkout
 
@@ -40,6 +45,12 @@ Registered dataset:
 
 ```text
 qwen2_5_vl_dpo_full
+```
+
+Canonical registered dataset:
+
+```text
+qwen2_5_vl_dpo
 ```
 
 Registered file:
@@ -74,5 +85,8 @@ The full training profile uses:
 
 ## Notes
 
-The Google Drive link provided for the complete annotations was not reachable from this environment. Direct access to `drive.google.com` timed out, and browser access returned unauthorized. The local recovered annotation artifacts already present in the workspace were used for this setup.
+The Google Drive package was downloaded locally through the system proxy on 2026-06-08. The downloaded package SHA-256 is:
 
+```text
+b3a85c90e0f272e840f0b6607a9098a83d2260e2b1fdccc3db49eccc4f0d4d1d
+```

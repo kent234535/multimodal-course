@@ -10,13 +10,13 @@ pixi run register-dpo-local
 
 This calls `scripts/register_llamafactory_dataset.py` and merges the dataset entry into `${LLAMAFACTORY_DIR}/data/dataset_info.json` so manual JSON edits are not required for the normal local workflow. The pixi task also creates `${LLAMAFACTORY_DIR}/images` as a symlink to this repository's `images/` directory when needed, so dataset rows like `"images": ["images/1.jpg"]` resolve under LLaMA-Factory.
 
-For review, the committed registration snippet is:
+For review, the committed local preview registration snippet is:
 
 ```bash
 configs/llamafactory/dataset_info.qwen2_5_vl_dpo_local_1000.json
 ```
 
-The expected LLaMA-Factory dataset row is `qwen2_5_vl_dpo_local_1000` and maps:
+The expected LLaMA-Factory preview dataset row is `qwen2_5_vl_dpo_local_1000` and maps:
 
 - `instruction` -> prompt
 - `input` -> query
@@ -24,13 +24,21 @@ The expected LLaMA-Factory dataset row is `qwen2_5_vl_dpo_local_1000` and maps:
 - `rejected` -> rejected
 - `images` -> images
 
-For the recovered 5,059-pair dataset used by the full training profile, use:
+For the complete 10,000-pair Drive annotation dataset, use:
+
+```bash
+configs/llamafactory/dataset_info.qwen2_5_vl_dpo.json
+```
+
+The corresponding LLaMA-Factory dataset row is `qwen2_5_vl_dpo`, with data file `qwen2_5_vl_dpo.json`.
+
+The full training profile also registers a compatibility alias:
 
 ```bash
 configs/llamafactory/dataset_info.qwen2_5_vl_dpo_full.json
 ```
 
-The corresponding LLaMA-Factory dataset row is `qwen2_5_vl_dpo_full`, with data file `qwen2_5_vl_dpo_full.json`.
+The corresponding LLaMA-Factory dataset row is `qwen2_5_vl_dpo_full`, with data file `qwen2_5_vl_dpo_full.json`. Locally, `qwen2_5_vl_dpo_full.json` points to the same complete 10,000-pair annotations.
 
 ## Training profiles
 
