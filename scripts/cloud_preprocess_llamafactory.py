@@ -25,6 +25,8 @@ def main() -> int:
 
     config_path = Path(sys.argv[1])
     config = OmegaConf.to_container(OmegaConf.load(config_path), resolve=True)
+    config["bf16"] = False
+    config["fp16"] = False
     model_args, data_args, training_args, finetuning_args, _ = _parse_train_args(config)
 
     if not data_args.tokenized_path:
