@@ -3,10 +3,11 @@ set -euo pipefail
 
 usage() {
   cat <<'EOF'
-Usage: bash scripts/cloud_llamafactory_readme.sh smoke|full
+Usage: bash scripts/cloud_llamafactory_readme.sh micro|smoke|full
 
 Runs the README-aligned LLaMA-Factory DPO profile through the cloud byf conda
-environment. The smoke profile only adds max_steps for timing; it keeps the
+environment. The smoke profile only adds max_steps for timing; the micro
+profile also caps max_samples to make a quick step-time probe. Both keep the
 same model, dataset, LoRA/DPO settings, and pref_loss as the README profile.
 EOF
 }
@@ -17,6 +18,10 @@ source "$REPO_ROOT/configs/cloud/byf_env.sh"
 
 MODE="${1:-smoke}"
 case "$MODE" in
+  micro)
+    CONFIG="$REPO_ROOT/configs/llamafactory/train_dpo_qwen2_5_vl_readme_micro.yaml"
+    LF_CONFIG="train_dpo_qwen2_5_vl_micro.yaml"
+    ;;
   smoke)
     CONFIG="$REPO_ROOT/configs/llamafactory/train_dpo_qwen2_5_vl_readme_smoke.yaml"
     LF_CONFIG="train_dpo_qwen2_5_vl_smoke.yaml"
