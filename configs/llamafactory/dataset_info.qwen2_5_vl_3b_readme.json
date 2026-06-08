@@ -1,0 +1,13 @@
+{
+  "qwen2.5_vl_3b": {
+    "file_name": "qwen2.5-vl-3b.json",
+    "columns": {
+      "prompt": "instruction",
+      "query": "input",
+      "chosen": "chosen",
+      "rejected": "rejected",
+      "images": "images"
+    },
+    "ranking": true
+  }
+}
