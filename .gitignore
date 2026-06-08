@@ -17,15 +17,20 @@
 !.env.example
 
 # Provided/generated large datasets and private course metadata. Keep out of public git unless licensing allows redistribution.
+/data/raw
 /data/raw/
+/images
 /images/
 /项目元信息.md
+/llava/data/eval/AMBER/images
 /llava/data/eval/AMBER/images/
 /llava/data/eval/AMBER/amber_gen/answers/
 /llava/data/eval/AMBER/amber_dis/answers/
 
 # Generated DPO datasets and judge audit artifacts
+/data/processed
 /data/processed/
+/data/audit
 /data/audit/
 /data/tmp/
 /data/cache/

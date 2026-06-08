@@ -24,6 +24,14 @@ The expected LLaMA-Factory dataset row is `qwen2_5_vl_dpo_local_1000` and maps:
 - `rejected` -> rejected
 - `images` -> images
 
+For the recovered 5,059-pair dataset used by the full training profile, use:
+
+```bash
+configs/llamafactory/dataset_info.qwen2_5_vl_dpo_full.json
+```
+
+The corresponding LLaMA-Factory dataset row is `qwen2_5_vl_dpo_full`, with data file `qwen2_5_vl_dpo_full.json`.
+
 ## Training profiles
 
 - Local RTX 4070S profile: `configs/llamafactory/train_dpo_qwen2_5_vl_local.yaml`
