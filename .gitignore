@@ -57,6 +57,7 @@
 # Heavy AMBER evaluation outputs
 /results/
 /outputs/
+/reports/
 
 # Python/runtime artifacts
 __pycache__/
