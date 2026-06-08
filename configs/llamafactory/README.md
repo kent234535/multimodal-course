@@ -44,6 +44,8 @@ The corresponding LLaMA-Factory dataset row is `qwen2_5_vl_dpo_full`, with data 
 
 - Local RTX 4070S profile: `configs/llamafactory/train_dpo_qwen2_5_vl_local.yaml`
 - Full 8xA100 profile: `configs/llamafactory/train_dpo_qwen2_5_vl_full.yaml`
+- README-aligned cloud profile: `configs/llamafactory/train_dpo_qwen2_5_vl_readme.yaml`
+- README-aligned smoke profile: `configs/llamafactory/train_dpo_qwen2_5_vl_readme_smoke.yaml`
 
 Both profiles preserve the assignment constraints:
 
@@ -52,3 +54,24 @@ Both profiles preserve the assignment constraints:
 - `pref_loss: sigmoid`
 - `template: qwen2_vl`
 - `model_name_or_path: Qwen/Qwen2.5-VL-3B-Instruct`
+
+## Cloud byf environment
+
+On `Host1`, use the `byf` conda environment explicitly:
+
+```bash
+source configs/cloud/byf_env.sh
+```
+
+The project default cloud environment is:
+
+```text
+/HDDDATA/byf/conda/envs/byf
+```
+
+Run README-aligned cloud training commands through:
+
+```bash
+bash scripts/cloud_llamafactory_readme.sh smoke
+bash scripts/cloud_llamafactory_readme.sh full
+```
