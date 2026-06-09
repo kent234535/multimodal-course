@@ -1,0 +1,171 @@
+{
+  "run_id": "readme_full_20260609_004625",
+  "status": "completed_after_eval_resume",
+  "exit_code": "0",
+  "failure": "",
+  "gpu_list": "0,7",
+  "start_time": "2026-06-09T00:46:26+08:00",
+  "end_time": "2026-06-09T06:10:20+08:00",
+  "duration": "5h 23m 54s",
+  "train_mode": "full",
+  "train_config": "/home/byf/byf/multimodal/configs/llamafactory/train_dpo_qwen2_5_vl_readme.yaml",
+  "readme_alignment": {
+    "model_name_or_path": {
+      "expected": "Qwen/Qwen2.5-VL-3B-Instruct",
+      "actual": "Qwen/Qwen2.5-VL-3B-Instruct",
+      "match": true
+    },
+    "stage": {
+      "expected": "dpo",
+      "actual": "dpo",
+      "match": true
+    },
+    "do_train": {
+      "expected": "true",
+      "actual": "true",
+      "match": true
+    },
+    "finetuning_type": {
+      "expected": "lora",
+      "actual": "lora",
+      "match": true
+    },
+    "pref_loss": {
+      "expected": "sigmoid",
+      "actual": "sigmoid",
+      "match": true
+    },
+    "dataset": {
+      "expected": "qwen2.5_vl_3b",
+      "actual": "qwen2.5_vl_3b",
+      "match": true
+    },
+    "template": {
+      "expected": "qwen2_vl",
+      "actual": "qwen2_vl",
+      "match": true
+    },
+    "cutoff_len": {
+      "expected": "2048",
+      "actual": "2048",
+      "match": true
+    },
+    "max_samples": {
+      "expected": "100000",
+      "actual": "100000",
+      "match": true
+    },
+    "per_device_train_batch_size": {
+      "expected": "1",
+      "actual": "1",
+      "match": true
+    },
+    "gradient_accumulation_steps": {
+      "expected": "16",
+      "actual": "16",
+      "match": true
+    },
+    "learning_rate": {
+      "expected": "4.0e-6",
+      "actual": "4.0e-6",
+      "match": true
+    },
+    "num_train_epochs": {
+      "expected": "2.0",
+      "actual": "2.0",
+      "match": true
+    },
+    "bf16": {
+      "expected": "true",
+      "actual": "true",
+      "match": true
+    },
+    "flash_attn": {
+      "expected": "fa2",
+      "actual": "fa2",
+      "match": true
+    }
+  },
+  "dataset_rows": 10000,
+  "amber_queries": {
+    "generative": 1004,
+    "discriminative": 14216
+  },
+  "adapter": {
+    "dir": "/home/byf/byf/multimodal/LlamaFactory/saves/qwen2.5-vl-3b-lora-dpo",
+    "exists": true,
+    "fixed_dir": "/home/byf/byf/multimodal/LlamaFactory/saves/qwen2.5-vl-3b-lora-dpo_fixed",
+    "fixed_exists": true,
+    "trainer": {
+      "global_step": 626,
+      "best_metric": null,
+      "last_train_row": {
+        "epoch": 2.0,
+        "step": 626,
+        "total_flos": 4.538174954306273e+17,
+        "train_loss": 0.6551324549955301,
+        "train_runtime": 10036.632,
+        "train_samples_per_second": 1.993,
+        "train_steps_per_second": 0.062
+      }
+    }
+  },
+  "amber": {
+    "base": {
+      "answers": {
+        "generative": "/home/byf/byf/multimodal/llava/data/eval/AMBER/amber_gen/answers/amber_base_readme_readme_full_20260609_004625.jsonl",
+        "discriminative": "/home/byf/byf/multimodal/llava/data/eval/AMBER/amber_dis/answers/amber_base_readme_readme_full_20260609_004625.jsonl",
+        "generative_count": 1004,
+        "discriminative_count": 14216
+      },
+      "eval_files": {
+        "generative": "/home/byf/byf/multimodal/llava/data/eval/AMBER/amber_gen/answers/amber_base_readme_readme_full_20260609_004625_eval_amber.jsonl",
+        "discriminative": "/home/byf/byf/multimodal/llava/data/eval/AMBER/amber_dis/answers/amber_base_readme_readme_full_20260609_004625_eval_amber.jsonl"
+      },
+      "generative": {
+        "CHAIR": 8.1,
+        "Cover": 69.3,
+        "Hal": 49.4,
+        "Cog": 5.2
+      },
+      "discriminative": {
+        "Accuracy": 55.2,
+        "Precision": 92.5,
+        "Recall": 41.6,
+        "F1": 57.4
+      }
+    },
+    "lora": {
+      "answers": {
+        "generative": "/home/byf/byf/multimodal/llava/data/eval/AMBER/amber_gen/answers/amber_lora_readme_readme_full_20260609_004625.jsonl",
+        "discriminative": "/home/byf/byf/multimodal/llava/data/eval/AMBER/amber_dis/answers/amber_lora_readme_readme_full_20260609_004625.jsonl",
+        "generative_count": 1004,
+        "discriminative_count": 14216
+      },
+      "eval_files": {
+        "generative": "/home/byf/byf/multimodal/llava/data/eval/AMBER/amber_gen/answers/amber_lora_readme_readme_full_20260609_004625_eval_amber.jsonl",
+        "discriminative": "/home/byf/byf/multimodal/llava/data/eval/AMBER/amber_dis/answers/amber_lora_readme_readme_full_20260609_004625_eval_amber.jsonl"
+      },
+      "generative": {
+        "CHAIR": 5.7,
+        "Cover": 62.9,
+        "Hal": 29.2,
+        "Cog": 2.3
+      },
+      "discriminative": {
+        "Accuracy": 69.6,
+        "Precision": 92.8,
+        "Recall": 62.6,
+        "F1": 74.8
+      }
+    }
+  },
+  "logs": {
+    "pipeline": "reports/cloud_runs/readme_full_20260609_004625/pipeline.log",
+    "train": "reports/cloud_runs/readme_full_20260609_004625/logs/train.log",
+    "fix_lora": "reports/cloud_runs/readme_full_20260609_004625/logs/fix_lora.log",
+    "eval_base": "reports/cloud_runs/readme_full_20260609_004625/logs/eval_base.log",
+    "eval_lora": "reports/cloud_runs/readme_full_20260609_004625/logs/eval_lora.log",
+    "report": "reports/cloud_runs/readme_full_20260609_004625/report.md"
+  }
+}

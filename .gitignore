@@ -1,5 +1,6 @@
 # macOS/local files
 .DS_Store
+._*
 
 # Local assistant/workflow state
 /.agents/
@@ -46,18 +47,40 @@
 /models/
 /checkpoints/
 /saves/
-/LlamaFactory/
-/LLaMA-Factory/
 *.safetensors
 *.bin
 *.pt
 *.pth
 *.ckpt
 
-# Heavy AMBER evaluation outputs
+# Vendored LLaMA-Factory source is tracked by this repository, but runtime
+# state, local secrets, datasets, images, and checkpoints are not.
+/LlamaFactory/.git/
+/LlamaFactory/.env
+/LlamaFactory/.env.*
+/LlamaFactory/images
+/LlamaFactory/images/
+/LlamaFactory/saves/
+/LlamaFactory/checkpoints/
+/LlamaFactory/logs/
+/LlamaFactory/output/
+/LlamaFactory/outputs/
+/LlamaFactory/cache/
+/LlamaFactory/data/qwen2.5-vl-3b.json
+/LlamaFactory/data/qwen2_5_vl_dpo.json
+/LlamaFactory/data/qwen2_5_vl_dpo_full.json
+
+# Heavy AMBER evaluation outputs and raw experiment artifacts
 /results/
 /outputs/
-/reports/
+/reports/*
+!/reports/
+!/reports/experiment_report_*.md
+!/reports/cloud_runs/
+!/reports/cloud_runs/*/
+!/reports/cloud_runs/*/report.md
+!/reports/cloud_runs/*/amber_summary.md
+!/reports/cloud_runs/*/summary.json
 
 # Python/runtime artifacts
 __pycache__/
