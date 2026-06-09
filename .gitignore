@@ -60,11 +60,17 @@
 /LlamaFactory/.env.*
 /LlamaFactory/images
 /LlamaFactory/images/
+/LlamaFactory/saves
 /LlamaFactory/saves/
+/LlamaFactory/checkpoints
 /LlamaFactory/checkpoints/
+/LlamaFactory/logs
 /LlamaFactory/logs/
+/LlamaFactory/output
 /LlamaFactory/output/
+/LlamaFactory/outputs
 /LlamaFactory/outputs/
+/LlamaFactory/cache
 /LlamaFactory/cache/
 /LlamaFactory/data/qwen2.5-vl-3b.json
 /LlamaFactory/data/qwen2_5_vl_dpo.json
